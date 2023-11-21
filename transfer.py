@@ -1,3 +1,4 @@
+import json
 from web3 import Web3, EthereumTesterProvider, HTTPProvider, WebsocketProvider, IPCProvider
 from eth_account.messages import encode_defunct, _hash_eip191_message
 from web3.middleware import geth_poa_middleware
@@ -64,13 +65,11 @@ private_key2 = '0xde4f925a22929a8766e16d921b4123c78561b61e6a5cb1bdbb60cf5705de7c
 
 # amount = w3.to_wei(0.0001, 'ether')
 
-# # تعیین اطلاعات تراکنش
 # nonce = w3.eth.get_transaction_count(address)
 # gas_price = w3.eth.gas_price
 # gas_limit = 21000
 # value = amount
 
-# # ساخت تراکنش
 # transaction = {
 #     'chainId': 11155111,
 #     'from': address,
@@ -81,32 +80,24 @@ private_key2 = '0xde4f925a22929a8766e16d921b4123c78561b61e6a5cb1bdbb60cf5705de7c
 #     'nonce': nonce,
 # }
 
-# # امضای تراکنش
 # signed_tx = w3.eth.account.sign_transaction(transaction, private_key=private_key)
 
-# # ارسال تراکنش
 # tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
 
 # print(f'Transaction sent: {tx_hash.hex()}')
 
 
-# # کلید خصوصی حساب مبدأ
 # private_key_from = private_key
 
-# # آدرس حساب مبدأ
 # address_from = address
 
-# # کلید خصوصی حساب مقصد
 # private_key_to = private_key2
 # nonce = w3.eth.get_transaction_count(address_from)
 # max_priority_fee_per_gas = w3.to_wei('5', 'gwei')
-# # آدرس حساب مقصد
 # address_to = address1
 
-# # مبلغ فانتوم برای انتقال
 # amount = w3.to_wei(0.0001, 'ether')
 
-# # ایجاد یک تراکنش نوع 2
 # tx = {
 #     'from': address_from,
 #     'to': address_to,
@@ -119,31 +110,24 @@ private_key2 = '0xde4f925a22929a8766e16d921b4123c78561b61e6a5cb1bdbb60cf5705de7c
 #     'type': 2,
 # }
 
-# # امضای تراکنش با کلید خصوصی حساب مبدأ
 # signed_tx = w3.eth.account.sign_transaction(tx, private_key_from)
 
-# # ارسال تراکنش امضا شده به شبکه فانتوم
 # tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
 # print(f'Transaction hash: {w3.to_hex(tx_hash)}')
-
-import json
 
 
 non_checksum_address = '0x5425890298aed601595a70AB815c96711a31Bc65'
 token_address = w3.to_checksum_address(non_checksum_address)
 # ---------------------------------------------------------------------------------
 
-# اطلاعات کیف پول فرستنده
 sender_address = address
 sender_private_key = private_key
 
 with open('abi.json') as f:
     token_abi = json.load(f)['abi']
-      
-# اطلاعات گیرنده توکن
+
 recipient_address = address1
 
-# انتقال توکن
 token_contract = w3.eth.contract(address=token_address, abi=token_abi)
 nonce = w3.eth.get_transaction_count(sender_address)
 
