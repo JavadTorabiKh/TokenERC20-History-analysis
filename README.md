@@ -11,11 +11,5 @@ This is a good resource for how to get ERC20 Token Transfer transaction informat
 
 ## Running
 
-1. Interact with the contract through the Python file
+1. Set the desired variables in the Python file and run
 
-
-
-
-## License
-
-Solidity is [MIT licensed](LICENSE).
